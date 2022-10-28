@@ -29,7 +29,15 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     #- run: npm test
-
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: sodiki/back_express_aws_ec2_docker
+        tags: latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
 #1- connexion a dockerhub
 #2 build a docker image
