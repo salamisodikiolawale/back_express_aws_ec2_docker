@@ -39,6 +39,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: build container
+      run: docker-compose up -d --build
+
 #1- connexion a dockerhub
 #2 build a docker image
 #3 push image dockerhub
